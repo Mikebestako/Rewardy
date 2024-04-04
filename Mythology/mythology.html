@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYTHOLOGY</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #quiz1, #quiz2, #quiz3, #quiz4 {
+            background-color: darkgreen;
+            height: 600px;
+            font-size: 14px;
+        }
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        span {
+            background-color: darkolivegreen;
+            border-radius: 2px;
+            padding: 0 15px;
+            border: 1px solid white;
+        }
+
+        span:hover {
+            background-color: darkcyan;
+            cursor: pointer;
+        }
+
+        .showLines {
+            border: 1px solid white;
+        }
+
+        .addPadding {
+            padding: 0 10px;
+        } 
+
+        .selectList:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .red {
+            background-color: red;
+            color: white;
+        }
+
+        .hide  {
+            display: none;
+        }
+
+        .selected {
+            background-color: darkcyan;
+        }
+
+        #final {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        #final > * {
+            width: 210px;
+        }
+    </style>
+</head>
+<body id="main">
+
+    <div id="quiz1"><table id="quest1"></table></div>
+    <div id="quiz2"><table id="quest2"></table></div>
+    <div id="quiz3"><table id="quest3"></table></div>
+    <div id="quiz4"><table id="quest4"></table></div>
+
+    <div id="final">
+        <span id="click1">A To T</span>
+        <span id="click2">WHAT</span>
+        <span id="click3">WHICH</span>
+        <span id="click4">WHO</span>
+    </div>
+    
+    <script>
+        let span1 = document.getElementById('click1');
+        let span2 = document.getElementById('click2');
+        let span3 = document.getElementById('click3');
+        let span4 = document.getElementById('click4');
+        let list1 = document.getElementById('list1');
+        let body = document.getElementById('main');
+        let divs = document.getElementsByTagName('div');
+
+        for(const div of divs){
+            div.classList.add('hide');
+        }
+
+        divs['quiz1'].classList.remove('hide');
+        divs['final'].classList.remove('hide');
+
+        let aToT = new Map ([
+            ['A minotaur is half human half what?', 'Bull'],
+            ['According to Algonquian folklore, how does one transform into a Wendigo?', 'Participating in cannibalism'],
+            ['According to Japanese folklore, what is the favorite food of the Kappa.', 'Cucumbers'],
+            ['According to the Egyptian Myth of Osiris, who murdered Osiris?', 'Set'],
+            ['Hel was the daugher of which Norse Mythological figure?', 'Loki'],
+            ['Hera is god of', 'Marriage'],
+            ['How many heads does cerberus have', '3'],
+            ['In African mythology, Anansi is a trickster and storyteller who takes the shape of which animal?', 'Spider'],
+            ['In Greek mythology, who is the god of wine?', 'Dionsyus'],
+            ['In Greek Mythology, who killed Achilles?', 'Paris'],
+            ['In Greek Mythology, who was the daughter of king Minos?', 'Adiane'],
+            ['In most traditions, who was the wife of Zeus', 'Hera'],
+            ['In Norse mythology, what is the name of the serpent which eats the roots of the ash tree Yggdrasil?', 'Nidhogg'],
+            ['Neptunes greek name was…	', 'Poseidon'],
+            ['Nidhogg is a mythical creature from what mythology?', 'Norse'],
+            ['Talos, the mythical giant bronze man, was the protector of which island?', 'Crete'],
+            ['The ancient Roman god of war was commonly known as which of the following', 'Mars'],
+            ['The greek god Poseidon was the god of what?', 'The Sea'],
+            ['The Hippogriff, not be confused with the Griffon, is magical creature with the front half of an eagle, and the back half of what?', 'A Horse'],
+            ['The Maori hold that which island nation was founded by Kupe, who discovered it under a long white cloud?', 'New Zealand'],
+            ['The Nike apparel and footwear brand takes its name from the Greek goddess of what?', 'Victory'],
+            ['The Norse god Odin has two pet crows named "Huginn" and "Munnin". What do their names mean?', 'Thought & Memory'],
+            ['This Greek goddesss name was chosen for the dwarf planet responsible for discord on Plutos classification amongst astronomers', 'Eris'],
+            ['This Greek mythological figure us the god/goddess of battle strategy (among other things).', 'Athena']
+        ]);
+
+        const what = new Map([
+            ['What animal did Queen Pasipahe sleep with before she gave birth to the Minotaur in Greek Mythology', 'Bull'],
+            ['What immense structure is referred to in Norse Mythology as the Yggdrasil', 'Tree'],
+            ['What is the name of Broadways first "long run" musical', 'The Elves'],
+            ['What is the name of the first human being in Norse mythology?', 'Ask'],
+            ['What is the name of the Greek god of blacksmiths?', 'Hephaestus'],
+            ['What is the name of the Greek god of peaceful deaths?', 'Thanatos'],
+            ['What mythology did the god "Apollo" come from?', 'Greek and Roman'],
+            ['What mytological creatures have womens faces and vultures bodies?', 'Harpies'],
+            ['What was the punishment for Sysiphuss craftiness?', 'Cursed to roll a boulder up a hill for eternity']
+        ]);
+
+        const which = new Map([
+            ['Which figure from Greek mythology traveled to the underworld to return his wife Eurydice to the land of the living?', 'Orpheus'],
+            ['Which Greek & Roman god was known as the god of music, truth and prophecy, healing, the sun and light, plague, poetry, and more?', 'Apollo'],
+            ['Which greek god/goddess tossed a golden apple with the words "for the fairest" into the middle of the feast of the gods?', 'Eris'],
+            ['Which Norse God has a horse named Sleipnir?', 'Odin'],
+            ['Which of the following is NOT a god in Norse Mythology', 'Jens'],
+            ['Which of the following is not one of the Greek Fates', 'Narcisis'],
+            ['Which of the following Mesopotamian mythological figures was NOT a deity?', 'Enkidu'],
+            ['Which of these mythological creatures is said to be half-man and half-horse?', 'Cenatur'],
+            ['Which of these Roman gods doesnt have a counterpart in Greek mythology?', 'Janus']
+
+        ]);
+
+        const who = new Map([
+            ['Who in Greek mythology, who led the Argonauts in search of the Golden Fleece?', 'Jason'],
+            ['Who is a minor god that is protector and creator of various arts, such as cheese making and bee keeping', 'Aristaeus'],
+            ['Who is the Egyptian god of reproduction and lettuce?', 'Min'],
+            ['Who is the god of war in Polynesian mythology?', 'Oro'],
+            ['Who played Marquis de Lafayette and Thomas Jefferson in the original Broadway run of Hamilton', 'Daveed Diggs'],
+            ['Who was the King of Gods in Ancient Greek mythology?', 'Zeus'],
+            ['Who was the only god from Greece who did not get a name change in Rome?', 'Apollo'],
+            ['Who was the Roman god of fire?', 'Vulcan']
+        ]);
+
+        span1.addEventListener('click', aToTFunction);
+        span2.addEventListener('click', whatFunction);
+        span3.addEventListener('click', whichFunction);
+        span4.addEventListener('click', whoFunction);
+
+        function aToTFunction(){
+            generateList('quiz1', 'quest1', aToT, '#quest1 tr', 'click1');
+        }
+
+        function whatFunction(){
+            generateList('quiz2', 'quest2', what, '#quest2 tr', 'click2');
+        }
+
+        function whichFunction(){
+            generateList('quiz3', 'quest3', which, '#quest3 tr', 'click3');
+        }
+
+        function whoFunction(){
+            generateList('quiz4', 'quest4', who, '#quest4 tr', 'click4');
+        }
+
+        function generateList(quiz, quest, list, query, getId){
+            hideAndSeek(quiz);
+            let table = document.getElementById(quest);
+            let rows = document.querySelectorAll(query);
+            console.log(rows.length);
+
+            if(rows.length != 0){
+                table.classList.remove('hide');
+                return
+            } else {
+                list.forEach(function(value, key, map){
+                    showTheRecords(value, key, table, getId);
+                })
+            }
+        }
+
+        function showTheRecords(value, key, table, id){
+
+            let buttons = document.querySelectorAll('span');
+            for(button of buttons){
+                if(button.id == id){
+                    button.classList.add('selected');
+                } else {
+                    button.classList.remove('selected');
+                }
+            }
+
+            let row1 = document.createElement('tr');
+            let col1 = document.createElement('td');
+            let col2 = document.createElement('td');
+            table.append(row1);
+            row1.append(col1);
+            row1.append(col2);
+            col1.textContent = key;
+            col2.textContent = value;
+
+            row1.classList.add('showLines');
+            col1.classList.add('showLines');
+            col2.classList.add('showLines');
+
+            col1.classList.add('addPadding');
+            col2.classList.add('addPadding');
+                
+            col1.classList.add('selectList');
+            col2.classList.add('selectList');  
+
+            col1.addEventListener('mousemove', addRed);
+            col1.addEventListener('mouseout', removeRed);
+                
+            function addRed(){
+                col2.classList.add('red');
+            }
+
+            function removeRed(){
+                col2.classList.remove('red');
+            }
+        }
+
+        function hideAndSeek(name){
+            for(const div of divs){
+                div.classList.add('hide');
+            }
+            divs['final'].classList.remove('hide'); 
+            divs[name].classList.remove('hide');    
+        }
+
+    </script>
+</body>
+</html>

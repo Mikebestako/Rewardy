@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SCIENCE</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #quiz1, #quiz2, #quiz3, #quiz4, #quiz5, #quiz6, #quiz7, #quiz8, #quiz9, #quiz10, #quiz11, #quiz12, #quiz13 {
+            background-color: darkgreen;
+            height: 600px;
+            font-size: 14px;
+        }
+
+        #quiz8 {
+            height: 800px;
+        }
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        span {
+            background-color: darkolivegreen;
+            border-radius: 2px;
+            padding: 0 15px;
+            border: 1px solid white;
+        }
+
+        span:hover {
+            background-color: darkcyan;
+            cursor: pointer;
+        }
+
+        .showLines {
+            border: 1px solid white;
+        }
+
+        .addPadding {
+            padding: 0 10px;
+        } 
+
+        .selectList:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .red {
+            background-color: red;
+            color: white;
+        }
+
+        .hide  {
+            display: none;
+        }
+
+        .selected {
+            background-color: darkcyan;
+        }
+
+        #final {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        #final > * {
+            width: 210px;
+        }
+    </style>
+</head>
+<body id="main">
+
+    <div id="quiz1"><table id="quest1"></table></div>
+    <div id="quiz2"><table id="quest2"></table></div>
+    <div id="quiz3"><table id="quest3"></table></div>
+    <div id="quiz4"><table id="quest4"></table></div>
+    <div id="quiz5"><table id="quest5"></table></div>
+    <div id="quiz6"><table id="quest6"></table></div>
+    <div id="quiz7"><table id="quest7"></table></div>
+    <div id="quiz8"><table id="quest8"></table></div>
+    <div id="quiz9"><table id="quest9"></table></div>
+    <div id="quiz10"><table id="quest10"></table></div>
+    <div id="quiz11"><table id="quest11"></table></div>
+    <div id="quiz12"><table id="quest12"></table></div>
+    <div id="quiz13"><table id="quest13"></table></div>
+    
+    <div id="final">
+        <span id="click1">A To T</span>
+        <span id="click2">HOW MANY</span>
+        <span id="click3">IN</span>
+        <span id="click4">THE</span>
+        <span id="click5">THIS</span>
+        <span id="click6">WHAT</span>
+        <span id="click7">WHAT IS</span>
+        <span id="click8">WHAT IS THE</span>
+        <span id="click9">WHEN</span>
+        <span id="click10">WHERE</span>
+        <span id="click11">WHICH</span>
+        <span id="click12">WHICH OF THE FOLLOWING</span>
+        <span id="click13">WHICH OF THESE</span>
+    </div>
+    
+    <script>
+        let span1 = document.getElementById('click1');
+        let span2 = document.getElementById('click2');
+        let span3 = document.getElementById('click3');
+        let span4 = document.getElementById('click4');
+        let span5 = document.getElementById('click5');
+        let span6 = document.getElementById('click6');
+        let span7 = document.getElementById('click7');
+        let span8 = document.getElementById('click8');
+        let span9 = document.getElementById('click9');
+        let span10 = document.getElementById('click10');
+        let span11 = document.getElementById('click11');
+        let span12 = document.getElementById('click12');
+        let span13 = document.getElementById('click13');
+        let list1 = document.getElementById('list1');
+        let body = document.getElementById('main');
+        let divs = document.getElementsByTagName('div');
+
+        for(const div of divs){
+            div.classList.add('hide');
+        }
+
+        divs['quiz1'].classList.remove('hide');
+        divs['final'].classList.remove('hide');
+
+        let aToT = new Map ([
+            ['A positron is an antiparticle of a what?', 'Electron'],
+            ['All of the following metal elements are liquids at or near temperature EXCEPT', 'Beryllium'],
+            ['An Organic compound is considered an alcohol if it has what functional group', 'Hydroxyl'],
+            ['An organism described as "heliotropic" has tendency to move towards which of these things?', 'Light'],
+            ['Approximately how long is a year on Uranus?', '84 Earth Years'],
+            ['At what temperature does water boil?', '212 F'],
+            ['Au on the Periodic Table refers to which element', 'Gold'],
+            ['Autosomal-dominant Compelling Helio-Ophthalmic Outburst syndrome is the need to do what when seeing the Sun?', 'Sneeze'],
+            ['Botanically speaking, which of these fruits is NOT berry?', 'Strawberry'],
+            ['Burning which of these metals will produce a bright white flame?', 'Magnesium'],
+            ['Deionized water is water with which of the following removed?', 'Iron'],
+            ['Deuterium is an isotope of which element?', 'Hydrogen'],
+            ['Down Syndrome is usually caused by an extra copy of which chromosome?', '21'],
+            ['Dry ice is the solid form of what substance?', 'Carbon Dioxide'],
+            ['Folic acid is the synthetic form of which vitamin?', 'Vitamin B'],
+            ['Gannymede is the largest moon of which planet?', 'Jupiter'],
+            ['How does radiation does a banana emit?', '0.1 Microsievert'],
+            ['How long is a light -year?', '9.461 Trillion Kilometers'],
+            ['How old is the universe?', '13.8 Billion Years'],
+            ['Human cells typically have how many copies of each gene?', '2'],
+            ['If you planted seeds of Quercus robur what would grow?', 'Trees'],
+            ['Muscle fiber is constructed of bundles small long organelles called what?', 'Myofibrils'], 
+            ['Myopia is the scientific term for which condition?', 'Shortsightedness'],
+            ['On the Beaufort Scale of wind force, what wind name is given to number 8?', 'Gale'],
+            ['On the periodic table of elements, what is the symbol for Tin?', 'Sn'],
+            ['On which mission did the space shuttle columbia break up upon re-entry', 'STS-107'],
+            ['Rhinoplasy is a surgical procedure on what part of the human body?', 'Nose'],
+            ['To the nearest minute, how long does it take for light to travel from the Sun to the Earth', '8 Minutes']
+        ]);
+
+        const howMany = new Map ([
+            ['How many bones are in the human body?', '206'],
+            ['How many chromosomes are in your body cells?', '23'],
+            ['How many degrees fahrenheit is 100 degrees Celsius', '212'],
+            ['How many legs is it biologically impossible for a centipede to have?', '100'],
+            ['How many objects are equivalent to one mole?', '6.022 x 10^23'],
+            ['How many officially recognized dwarf planets in the solar system are named after Polynesian deities?','2'],
+            ['How many planets in a Solar System?', '8'],
+            ['How many protons are in an oxygen atom', 'Eight'],
+            ['How many types of quarks are there in the standard model of phsysics?', '6']
+        ]);
+
+        const inAll = new Map ([
+            ['In Aeronautics, flaps and slats are used to control what on an aircraft?', 'lift'],
+            ['In Chemistry, how many isomers does Butanol (C4H9OH) have?', '4'],
+            ['In human biology, a circadium rhythm relates to a period of roughly how many hours?', '24'],
+            ['In physics, conservation of energy and conservation of momentum are both consequences of which of the following', 'Noethers Theorem'],
+            ['In Psychology, which need appears highest in the Maslows hierarchy of needs pyramid', 'Esteem'],
+            ['In quantum physics, which of these theorised sub-atomic particles has yet to be observed?', 'Graviton'],
+            ['In the Scoville scale, what is the hottest chemical', 'Resiniferatoxin']
+        ]);
+
+        const theAll = new Map([
+            ['The "Tibia" is found in which part of the body?', 'Leg'],
+            ['The asteroid belt is located between two planets?', 'Mars and Jupiter'],
+            ['The biggest distinction between a eukaryotic cell and a prokaryotic cell is:', 'The presence of absence of a nucleus'],
+            ['The biggest distinction between a eukaryotic cell and prokaryotic cell is:', 'The presence of absence of a nucleus'],
+            ['The core of the Sun can reach which temperature?', '27 Million (15 degrees Million C)'],
+            ['The element involved  in making human blood red is which of the following?', 'Iron'],
+            ['The human heart has how many chambers?', '4'],
+            ['The human right lung has how many lobes?', '3'],
+            ['The humerus, paired radius,  and ulna come together to form what joint?', 'Elbow'],
+            ['The medial meniscus forms which part of what joint in the human body?', 'knee'],
+            ['The medical condition osteoporosis affects which part of the body?', 'Bones'],
+            ['The medical term for the belly button is which of the following?', 'Umbilicus'],
+            ['The moons, Miranda, Ariel, Umbriel, Titania and Oberon orbit which planet?', 'Uranus'],
+            ['The sun consists of mostly which two elements?', 'Hydrogen & Helium'],
+            ['This element, when overcome with extreme heat and pressure, creates diamonds', 'Carbon']
+        ]);
+
+        const thisAll = new Map([
+            ['This element, when overcome with extreme heat and pressure, creates diamond',	'Carbon']
+        ]);
+
+        const what = new Map([
+            ['What animal part in Schrodingers most famous thought experiment?', 'Cat'],
+            ['What Apollo mission was the first one to land on the Moon?', 'Apollo 11'],
+            ['What are human nails made of?', 'Keratin'],
+            ['What are the smallest blood vessels in the human body?', 'Capillaries'],
+            ['What causes the sound of a heartbeat?', 'Closure of the heart valves'],
+            ['What common name is given to the medial condition, tibial stress syndrome (MTSS)', 'Shin Splints'],
+            ['What did the Great Stoorm of 1987 make landfall at, first?', 'Cornwall'],
+            ['What do you study if you are studying entomology', 'insects'],
+            ['What does DNA stand for?', 'Deoxyribonucleic Acid'],
+            ['What does LASER stand for?', 'Light amplification by stimulated emission of radiation'],
+            ['What does the term "isolation" refer to in microbiology?', 'The seperation of a strain from a natural, mixed population of living microbes'],
+            ['What does the yellow diamond on the NFPA 704 fire diamond represent?', 'Reactivity'],
+            ['What element has the atomic number of 7?', 'Nitrogen'],
+            ['What element on the periodic table has 92 electrons?', 'Uranium'],
+            ['What genetic disease is caused by having an extra Y chromosome (XYY)?', 'Jacobs syndrome'],
+            ['What mineral has the lowest numbers on the Mohs scale', 'Talc'],
+            ['What name is given to all baby marsupials?', 'Joey'],
+            ['What North American tourist attraction is served by the "Maid of the Mist" tour company?', 'Niagara Falls'],
+            ['What nucleotide pairs with guanine?', 'Cytosine'],
+            ['What part of the brain take its name the Greek for seahorse?', 'Hippocampus'],
+            ['What physics principle relates the net electric flux out of a closed surface to the charge enclosed by the surface?', 'Gausss Law'],
+            ['What scientific unit is named after Italian nobleman?', 'Volt'],
+            ['What stage of development do the majority of eukaryotic cells remain in for most of their life?', 'Interphase'],
+            ['What term is best associated with Sigmund Freud?', 'Pyschoanalysis'],
+            ['What was the first organic compound to be synthesized from inorganic compounds', 'Urea'],
+            ['What was the name of the first artificial Earth satellite, launched by the Soviet Union in 1957?', 'Sputnik 1']
+        ]);
+
+        const whatIs = new Map([
+            ['What is "Stenoma"?', 'A genus of moths'],
+            ['What is an alternative name or multiple personality disorder?', 'Dissociative identity disorder'],
+            ['What is considered the rarist form of color Blindness', 'Blue'],
+            ['What is Hypermatremia', 'Increase in blood sodium'],
+            ['What is isobutylphenylpropanoic acid more commonly known as?', 'Ibuprofen']
+        ]);
+
+        const whatIsThe = new Map([
+            ['What is the "powerhouse" of the Eukaryotic animal cell?', 'Mitochondria'],
+            ['What is the atomic mass of carbon?', '12'],
+            ['What is the atomic number of the element Stronium?', '38'],
+            ['What is the chemical formula for ammonia?', 'NH3'],
+            ['What is the colour of unoxidized blood?', 'Red'],
+            ['What is the elemental symbol for mercury', 'Hg'],
+            ['What is the half-life of Uranium-235?', '703,800,000'],
+            ['What is the hottest planet in the solar system?', 'Venus'],
+            ['What is the largest living organism currently known to man?', 'Honey Fungus'],
+            ['What is the Linnean name of the domestic apple tree?', 'Malus pumila'],
+            ['What is the molecular formula of Glucose?', 'C6H12O6'],
+            ['What is the molecular formula of Ozone?', 'O3'],
+            ['What is the molecular formula of the active component of chili peppers (Capsaicin)?', 'C18H27NO3'],
+            ['What is the most potent toxin known?', 'Botulinum Toxin'],
+            ['What is the name of the auditory illusion of a note that seems to be rising infinitely?', 'Shepard Tone'],
+            ['What is the name of the cognitive bias wherein a person with low ability in a particular skill mistake themselves as being superior?', 'Dunning-Kruger effect'],
+            ['What is the official name of the star located closes to the north Celestial Pole?', 'Polaris'],
+            ['What is the region conjoining Pakistan, India, and China with unknown leadership called?', 'Kashmir'],
+            ['What is the same in Celsius and Fahrenheit?', '-40'],
+            ['What is the scientific name for the extinct hominin known as "Lucy"', 'Australopithecus Afarensis'],
+            ['What is the scientific name of the knee cap?', 'Patella'],
+            ['What is the scientific name of the red fox?', 'Vulpes Vulpes'],
+            ['What is the scientific term for "taste"', 'Gustatory Perception'],
+            ['What is the speed of light in vacuum?', '299,792'],
+            ['What is the standard atomic weight of a Plutonium nucleus?', '244'],
+            ['What is the standard Unit in Temperature?', 'Kelvin'],
+            ['What is the study of the cells and tissues of plants and animals?', 'Histology'],
+            ['What is the unit of electrical capacitance?', 'Farad'],
+            ['What is the unit of electrical inductance?', 'Henry'],
+            ['What is the unit of electrical resistance?', 'Ohm']
+        ]);
+
+        const when = new Map([
+            ['When the Falcon Heavy was launched on its test flight, what was the only part of the operation the failed?',	'Center Core Landing']
+        ]);
+
+        const where = new Map([
+            ['Where did the dog breed "Chihuahua" originate?', 'Mexico'],
+            ['Where did the Great Storm of 1987 make landfall at, first?', 'Cornwall'],
+            ['Where is the Gluteus Maximus muscle located?', 'Butt']
+        ]);
+
+        const which = new Map([
+            ['Which Apollo mission was the first one to land on the moon?', 'Apollo 11'],
+            ['Which chemical element has the the lowest boiling point?', 'Helium'],
+            ['Which chemical element was originally known as Alabamine?', 'Astatine'],
+            ['Which color cannot be produced in Roses, even through genetic alteration?', 'Blue'],
+            ['Which constellation contains the center of the Milky Way', 'Sagittarius'],
+            ['Which desert is the only desert in the world where the Saguaro cactus grows indigenously', 'The Sonoran Dessert'],
+            ['Which element has the atomic number of 7?', 'Nitrogen'],
+            ['Which element has the chemical symbol "Fe"', 'Iron'],
+            ['Which element has the highest melting point?', 'Carbon'],
+            ['Which horizon in a soil profile consists of bedrock?', 'R'],
+            ['Which is not a  type of neuron?', 'Perceptual Neuron'],
+            ['Which is not a country in Africa?', 'Guyana'],
+            ['Which is the longest bone in the human body?', 'Femur'],
+            ['Which is the most abundant element in the universe?', 'Hydrogen'],
+            ['Which major extinction event was caused by an asteroid collision and eliminated the majority of non-avian dinosaurs?', 'Crateceous-Paleogene'],
+            ['Which moon is the only satellite in our solar system to possess a dense atmosphere?', 'Titan'],
+            ['Which noble gas has the lowest atomic number?', 'Helium'],
+            ['Which one of these is scientific term for "Brain Breeze"?', 'Sphenoplatatine Ganglionuralgia'],
+            ['Which one of these scientists conducted the Gold Foil Experiment which concluded that atoms are mostly made of empty space?', 'Ernest Rutherford'],
+            ['Which part of the body does glaucoma affect', 'Eyes'],
+            ['Which portion of the Marijuana plant produces the psychoactive substance known as THC?', 'Female Flower'],
+            ['Which psychological term refers to the stress of holding contrasting beliefs?', 'Cognitive Dissonance'],
+            ['Which scientific unit is named after an italian nobleman?', 'Volt'],
+            ['Which type of rock is created by intense heat AND pressure?', 'Metamorphic'],
+            ['Who discovered the Law of Gravity?', 'Sir Isaac Newton'],
+            ['Who is the chemical element Curium named after?', 'Marie & Pierre Curie']
+        ]);
+
+        const whichOfTheFollowing = new Map([
+            ['Which of the following are cells of the adpative immune system?', 'Cytotoxic T Cells'],
+            ['Which of the following blood vessels carries deoxygenated blood?', 'Pulmunary Artery'],
+            ['Which of the following bones is not in the leg?', 'Radius'],
+            ['Which of the following elements is typically used in the doping of the semiconductor silicon?', 'Boron'],
+            ['Which of the following is a major muscle of the back?', 'Trapezius'],
+            ['Which of the following is considered classical conditioning?', 'Pavlovs dog experiment'],
+            ['Which of the following is NOT a passive electrical component?', 'Transistor'],
+            ['Which of the following is NOT a real element', 'Vitranium'],
+            ['Which of the following is NOT a word used to describe an earthquake?', 'Drop-slide'],
+            ['Which of the following is the term for "surgical complications resulting from surgical sponges left inside the patients body?', 'Gossypiboma'],
+            ['Which of the following liquids is least viscous? Assume temperature is 25 Degrees Celsius', 'Acetone'],
+            ['Which of the following men does not have a chemical element named after him?', 'Sir Isaac Newton']
+        ]);
+
+        const whichOfThese = new Map([
+            ['Which of these African countries list "Spanish" as an official language', 'Equatorial Guinea'],
+            ['Which of these animals belongs in class Chondrichthyes?', 'Great white shark'],
+            ['Which of these bones is hardest to break?', 'Femur'],
+            ['Which of these chemical compounds is NOT found in gastric acid?', 'Sulfuric Acid'],
+            ['Which of these choices is not one of the phases of mitosis?', 'Diplophase'],
+            ['Which of these Elements is a metalloid?', 'Antimony'],
+            ['Which of these elements on the Periodic Table is a Noble Gas?', 'Neon'],
+            ['Which of these is a stop codon in DNA?', 'TAA'],
+            ['Which of these is a type of stretch/deep tendon reflex?', 'Ankle jerk reflex'],
+            ['Which of these is NOT a part of the structure of a typical neuron?', 'Islets of Langerhans'],
+            ['Which of these stars is the largest?', 'UY Scuti']
+        ]);
+
+        span1.addEventListener('click', aToTFunction);
+        span2.addEventListener('click', howManyFunction);
+        span3.addEventListener('click', inAllFunction);
+        span4.addEventListener('click', theAllFunction);
+        span5.addEventListener('click', thisAllFunction);
+        span6.addEventListener('click', whatFunction);
+        span7.addEventListener('click', whatIsFunction);
+        span8.addEventListener('click', whatIsTheFunction);
+        span9.addEventListener('click', whenFunction);
+        span10.addEventListener('click', whereFunction);
+        span11.addEventListener('click', whichFunction);
+        span12.addEventListener('click', whichOfTheFollowingFunction);
+        span13.addEventListener('click', whichOfTheseFunction);
+        
+
+        function aToTFunction(){
+            generateList('quiz1', 'quest1', aToT, '#quest1 tr', 'click1');
+        }
+
+        function howManyFunction(){
+            generateList('quiz2', 'quest2', howMany, '#quest2 tr', 'click2');
+        }
+
+        function inAllFunction(){
+            generateList('quiz3', 'quest3', inAll, '#quest3 tr', 'click3');
+        }
+
+        function theAllFunction(){
+            generateList('quiz4', 'quest4', theAll, '#quest4 tr', 'click4');
+        }
+
+        function thisAllFunction(){
+            generateList('quiz5', 'quest5', thisAll, '#quest5 tr', 'click5');
+        }
+
+        function whatFunction(){
+            generateList('quiz6', 'quest6', what, '#quest6 tr', 'click6');
+        }
+
+        function whatIsFunction(){
+            generateList('quiz7', 'quest7', whatIs, '#quest7 tr', 'click7');
+        }
+
+        function whatIsTheFunction(){
+            generateList('quiz8', 'quest8', whatIsThe, '#quest8 tr', 'click8');
+        }
+
+        function whenFunction(){
+            generateList('quiz9', 'quest9', when, '#quest9 tr', 'click9');
+        }
+
+        function whereFunction(){
+            generateList('quiz10', 'quest10', where, '#quest10 tr', 'click10');
+        }
+
+        function whichFunction(){   
+            generateList('quiz11', 'quest11', which, '#quest11 tr', 'click11');
+        }
+
+        function whichOfTheFollowingFunction(){
+            generateList('quiz12', 'quest12', whichOfTheFollowing, '#quest12 tr', 'click12');
+        }
+
+        function whichOfTheseFunction(){
+            generateList('quiz13', 'quest13', whichOfThese, '#quest13 tr', 'click13');
+        }
+
+        function generateList(quiz, quest, list, query, getId){
+            hideAndSeek(quiz);
+            let table = document.getElementById(quest);
+            let rows = document.querySelectorAll(query);
+            console.log(rows.length);
+
+            if(rows.length != 0){
+                table.classList.remove('hide');
+                return
+            } else {
+                list.forEach(function(value, key, map){
+                    showTheRecords(value, key, table, getId);
+                })
+            }
+        }
+
+        function showTheRecords(value, key, table, id){
+
+            let buttons = document.querySelectorAll('span');
+            for(button of buttons){
+                if(button.id == id){
+                    button.classList.add('selected');
+                } else {
+                    button.classList.remove('selected');
+                }
+            }
+
+            let row1 = document.createElement('tr');
+            let col1 = document.createElement('td');
+            let col2 = document.createElement('td');
+            table.append(row1);
+            row1.append(col1);
+            row1.append(col2);
+            col1.textContent = key;
+            col2.textContent = value;
+
+            row1.classList.add('showLines');
+            col1.classList.add('showLines');
+            col2.classList.add('showLines');
+
+            col1.classList.add('addPadding');
+            col2.classList.add('addPadding');
+                
+            col1.classList.add('selectList');
+            col2.classList.add('selectList');  
+
+            col1.addEventListener('mousemove', addRed);
+            col1.addEventListener('mouseout', removeRed);
+                
+            function addRed(){
+                col2.classList.add('red');
+            }
+
+            function removeRed(){
+                col2.classList.remove('red');
+            }
+        }
+
+        function hideAndSeek(name){
+            for(const div of divs){
+                div.classList.add('hide');
+            }
+            divs['final'].classList.remove('hide'); 
+            divs[name].classList.remove('hide');    
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEOGRAPHY</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #quiz1, #quiz2, #quiz3, #quiz4, #quiz5, #quiz6, #quiz7, #quiz8, #quiz9, #quiz10, #quiz11, #quiz12, #quiz13, #quiz14, #quiz15 {
+            background-color: darkgreen;
+            height: 600px;
+            font-size: 14px;
+        }
+
+        #quiz7 {
+            height: 800px;
+        }
+
+        div {
+            margin-bottom: 10px;
+        }
+
+        span {
+            background-color: darkolivegreen;
+            border-radius: 2px;
+            padding: 0 15px;
+            border: 1px solid white;
+        }
+
+        span:hover {
+            background-color: darkcyan;
+            cursor: pointer;
+        }
+
+        .showLines {
+            border: 1px solid white;
+        }
+
+        .addPadding {
+            padding: 0 10px;
+        } 
+
+        .selectList:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .red {
+            background-color: red;
+            color: white;
+        }
+
+        .hide  {
+            display: none;
+        }
+
+        .selected {
+            background-color: darkcyan;
+        }
+
+        #final {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        #final > * {
+            width: 210px;
+        }
+    </style>
+</head>
+<body id="main">
+
+    <div id="quiz1"><table id="quest1"></table></div>
+    <div id="quiz2"><table id="quest2"></table></div>
+    <div id="quiz3"><table id="quest3"></table></div>
+    <div id="quiz4"><table id="quest4"></table></div>
+    <div id="quiz5"><table id="quest5"></table></div>
+    <div id="quiz6"><table id="quest6"></table></div>
+    <div id="quiz7"><table id="quest7"></table></div>
+    <div id="quiz8"><table id="quest8"></table></div>
+    <div id="quiz9"><table id="quest9"></table></div>
+    <div id="quiz10"><table id="quest10"></table></div>
+    <div id="quiz11"><table id="quest11"></table></div>
+    <div id="quiz12"><table id="quest12"></table></div>
+    <div id="quiz13"><table id="quest13"></table></div>
+    <div id="quiz14"><table id="quest14"></table></div>
+    <div id="quiz15"><table id="quest15"></table></div>
+    
+    <div id="final">
+        <span id="click1">A TO M</span>
+        <span id="click2">HOW MANY</span>
+        <span id="click3">IN</span>
+        <span id="click4">THE</span>
+        <span id="click5">WHAT</span>
+        <span id="click6">WHAT IS THE CAPITAL</span>
+        <span id="click7">WHAT IS THE</span>
+        <span id="click8">WHAT IS THE NAME</span>
+        <span id="click9">WHAT IS THE LARGEST</span>
+        <span id="click10">WHEN</span>
+        <span id="click11">WHERE</span>
+        <span id="click12">WHICH</span>
+        <span id="click13">WHICH COUNTRY</span>
+        <span id="click14">WHICH OF THE FOLLOWING</span>
+        <span id="click15">WHICH OF THESE</span>
+    </div>
+    
+    <script>
+        let span1 = document.getElementById('click1');
+        let span2 = document.getElementById('click2');
+        let span3 = document.getElementById('click3');
+        let span4 = document.getElementById('click4');
+        let span5 = document.getElementById('click5');
+        let span6 = document.getElementById('click6');
+        let span7 = document.getElementById('click7');
+        let span8 = document.getElementById('click8');
+        let span9 = document.getElementById('click9');
+        let span10 = document.getElementById('click10');
+        let span11 = document.getElementById('click11');
+        let span12 = document.getElementById('click12');
+        let span13 = document.getElementById('click13');
+        let span14 = document.getElementById('click14');
+        let span15 = document.getElementById('click15');
+        let list1 = document.getElementById('list1');
+        let body = document.getElementById('main');
+        let divs = document.getElementsByTagName('div');
+
+        for(const div of divs){
+            div.classList.add('hide');
+        }
+
+        divs['quiz1'].classList.remove('hide');
+        divs['final'].classList.remove('hide');
+
+        let aToM = new Map ([
+            ['All of the following are classified as Finno-Ugric languaages EXCEPT:', 'Simoyedic'],
+            ['All of the following are towns/villages in the Pacific Island nation of Kiribati EXCEPT:', 'Urutora'],
+            ['Bir Tawil, an uninhabited track of land claimed by no country, is located along the border of which two countries?', 'Egypt and Sudan'],
+            ['Bridgetown is the capital of which island country in the Carribean?', 'Barbados'],
+            ['Broom is a town in which state of Australia?', 'Western Australia'],
+            ['Colchester Overpass, otherwise known as "Bunny Man Bridge", is located where?	Fairfax County,', 'Virginia'],
+            ['Frankenmuth, a US city nicknamed "Little Bavaria", is located in what state?', 'Michigan'],
+            ['Fucking is a village in which country?', 'Austria'],
+            ['Gibraltar, located just south of the Iberian peninsula, is a territory of which West Europe country?', 'United Kingdom'],
+            ['Greenland is a part of which kingdom?', 'Denmark'],
+            ['Harvard University is located in which city?', 'Cambridge'],
+            ['In which English county is Stonehenge?', 'Wiltshire'],
+            ['In Which English county is the city of Portsmouth?', 'Hamshire'],
+            ['Into which basin does the Jordan River flow into?', 'Dead Sea'],
+            ['Lake Titicaca is located between which two nations?', 'Peru and Bolivia'],
+            ['Llanfairwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch is located on which Welsh Island?', 'Anglesey'],
+            ['Motreal is in which Canadian province?', 'Quebec'],
+            ['On a London Underground map, what colour is the circle Line?', 'Yellow'],
+            ['On which continent is the country of Angola located', 'Africa']
+        ]);
+
+        const howMany = new Map ([
+            ['How many countries are inside the United Kingdom?', 'Four'],
+            ['How many countries are larger than Australia', '5'],
+            ['How many countries border Kyrgyztan', '4'],
+            ['How many countries does Mexico border', '3'],
+            ['How many countries does Spain have a land border with', '5'],
+            ['How many countries does the United States share a land border with', '2'],
+            ['How many countries in the Republic of Ireland', '26'],
+            ['How many countries share a land border with Luxembourg', '3'],
+            ['how many federal states does germany have', '16'],
+            ['How many independent countries are there within the continent of South America', '12'],
+            ['How many provinces are in the Netherlands', '12'],
+            ['How many rivers are in Saudi Arabia', '0'],
+            ['How many sovereign states are members of the United Nations', '195'],
+            ['How many stars are featured on New Zealands flag', '4'],
+            ['How many states are  in Australia', '6'],
+            ['How many stations does the Central Line have on the London Underground', '49'],
+            ['How many Time zones are in Russia', '11'],
+            ['How many time zones does China have?', '1']
+
+        ]);
+
+        const inAll = new Map ([
+            ['In 2012 the German-speaking microstate "Liechenstein" in Central Europe had a population of how many inhabitants?', '36600'],
+            ['in 2016 Global Peace Index poll, out of 163 countries, what was the United States of America ranked', '103'],
+            ['In which city, is the Big Nickel located in Canada', 'Sudbury, Ontario'],
+            ['In which country is Talinn located?', 'Estonia'],
+            ['In which English county is Stonehenge?', 'Wiltshire'],
+            ['In Which English county is the city of Portsmouth?', 'Hamshire']
+        ]);
+
+        const theAll = new Map([
+            ['The Alps are a mountain range on which continent', 'Europe'],
+            ['The Andaman and Nibocar Islands in South East Asia are controlled by which country', 'India'],
+            ['The body of the Egyptian Sphinx was based on which animal', 'Lion'],
+            ['The derisive acronym "PIIGS" refers to which of the following European countries and their economic statuses', 'Portugal, Ireland, Italy, Greece, Spain'],
+            ['The emblem on the flag of the Republic of Tajikistan features a sunrise over mountains below what symbol', 'Crown'],
+            ['The following Spanish provinces are located in the northern area of Spain except:', 'Murcia'],
+            ['The Formerly East-Prussian city of Konigsberg is known as which Russian City today', 'Kaliningrad'],
+            ['The historical city Timbuktu is located in which West African country', 'Mali'],
+            ['The Hunua Ranges is located in', 'New Zealand'],
+            ['The Japanese district Akihabara is also known by what nickname', 'Electric Town'],
+            ['The land mass of modern day Turkey is called what', 'Anatolia'],
+            ['The land of Gotland is located in which European country', 'Sweden'],
+            ['The longest shared border in the world can be found between which two nations', 'Canada an United States'],
+            ['The Maluku islands (informally known as the Spice Islands) belong to which country', 'Indonesia'],
+            ['The mountainous Khyber Pass connects which of the two following countries', 'Afghanistan and Pakistan'],
+            ['The Principality of Sealand is an unrecognized micronation off the coast of what country', 'The United Kingdom'],
+            ['The Pyrenees mountains are located of the border of which two countries', 'France and Spain'],
+            ['The Space Needle is located in which city', 'Seattle'],
+            ['The towns of Brugelette, Arlon and Ath are located in which country', 'Belgium']
+        ]);
+
+        const what = new Map([
+            ['What African country has Portuguese as its official Language?', 'Mozambique'],
+            ['What are the four corner states of the US?', 'Utah, Colorado, Arizona, New Mexico'],
+            ['What are the Nazca Lines Located?', 'Peru'],
+            ['What city has the busiest airport in the world?', 'Atlanta, Georgia USA'],
+            ['What city is known as the Rose Capital of the World?', 'Tyler, Texas'],
+            ['What city is the Terracotta Army located in?', 'Xian'],
+            ['What continent is the country Lesotho in?', 'Africa'],
+            ['What country has a horizontal bicolor red and white flag?', 'Monaco'],
+            ['What country is not a part of Scandinavia?', 'Finland'],
+            ['What country is the home of the largest Japanese population outside of Japan?', 'Brazil'],
+            ['What European country is not a part of the EU?', 'Norway'],
+            ['What event led to Liechenstein adding a crown to its flag?', 'The 1936 Olympics'],
+            ['What is Canadas largest island', 'Baffin Island'],
+            ['What is Canadas smallest province', 'Prince Edward Island'],
+            ['What is not a country in Africa?', 'Guyana'],
+            ['What island in the Canary Islands was the scene of one of the worst air disasters in history with the collision of two jumbo jets?', 'Tenerife'],
+            ['What mountain range lines the border between Spain and France?', 'Pyrenees'],
+            ['What name was historically used for the Turkish city currently known as Instanbul', 'Constantinople'],
+            ['What national museum will you find in Cooperstown, New York?', 'National Baseball Hall of Fame'],
+            ['What North American tourist attraction is served by the "Maid of the Mist" tour company?', 'Niagara Falls'],
+            ['What state is the largest state of the United States of America?', 'Alaska'],
+            ['What tiny principality lies between Spain and France?', 'Andorra'],
+            ['What was the african nation of Zimbabwe formerly known as?', 'Rhodesia'],
+            ['What was the most populous city in the Americas in 2015?', 'Sau Paulo'],
+            ['What year is on the flag of the US state wisconsin', '1848']
+        ]);
+
+        const whatIsTheCapital = new Map([
+            ['What is the capital city of Bermuda?', 'Hamilton'],
+            ['What is the capital city of New Zealand?', 'Wellington'],
+            ['What is the capital city of Slovenia?', 'Ljubljana'],
+            ['What is the capital of Australia', 'Canberra'],
+            ['What is the capital of Belarus?',	'Minsk'],
+            ['What is the capital of British Columbia, Canada',	'Victoria'],
+            ['What is the capital of Chile?', 'Santiago'],
+            ['What is the capital of Denmark', 'Copenhagen'],
+            ['What is the capital of Estonia?', 'Talinn'],
+            ['What is the capital of Greenland?', 'Nuuk'],
+            ['What is the capital of Jamaica?',	'Kingston'],
+            ['What is the capital of Lithuania', 'Vilnius'],
+            ['What is the capital of Mauritius', 'Port Luis'],
+            ['What is the capital of Peru?', 'Lima'],
+            ['What is the capital of Scotland?', 'Edinburgh'],
+            ['What is the capital of Senegal?',	'Dakar'],
+            ['What is the capital of Seychelles?', 'Victoria'],
+            ['What is the capital of Slovakia?', 'Bratislava'],
+            ['What is the capital of Spain', 'Madrid'],
+            ['What is the capital of the American State of Arizona', 'Phoenix'],
+            ['What is the capital of the State of Washington, United States', 'Olympia'],
+            ['What is the capital of the US state nevada', 'Carson City'],
+            ['What is the capital of the US State of New York?', 'Albany'],
+            ['What is the capital of Wisconsin USA?	Madison', 'Madison']
+
+        ]);
+
+        const whatIsThe = new Map([
+            ['What is the African nation of Zimbabwe formerly known as?', 'Rhodesia'],
+            ['What is the area of Vatican City?', '	0.44km^2'],
+            ['What is the busiest port in Europe?', 'Port of Rotterdam'],
+            ['What is the county seat of king County Washington', 'Seattle'],
+            ['What is the fifth largest country by area?', 'Brazil'],
+            ['What is the Finnish word for Finland?', '	Suomi'],
+            ['What is the land connecting North America and South America', 'Isthmus of Panama'],
+            ['What is the largest city and commercial capital of Sir Lanka', 'Colombo'],
+            ['What is the largest city in Morocco?', 'Casablanca'],
+            ['What is the largest country in the world?', 'Russia'],
+            ['What is the largest freshwater lake by volume?', 'Lake Baikal'],
+            ['What is the largest lake in the African continent?', 'Lake Victoria'],
+            ['What is the largest Muslim country in the world?', 'Indonesia'],
+            ['What is the largest non-continental island in the world?', 'Greenland'],
+            ['What is the longest river in Europe?', 'Volga'],
+            ['What is the most common climbing route for the second highest mountain in the world, K2?', 'Abruzzi Spur'],
+            ['What is the nickname for the US state Delaware?', 'First State'],
+            ['What is the northermost human settlement with year round inhabitants?', 'Alert, Canada'],
+            ['What is the official German name of the swiss Federal Railways?', 'Schweizerische Bundesbahnen'],
+            ['What is the official language of Bhutan?', 'Dzongkha'],
+            ['What is the official language of Costa Rica?', 'Spanish'],
+            ['What is the official national language of Pakistan?', 'Urdu'],
+            ['What is the only country in the world with a flag that doesnt have four right angles?', 'Nepal'],
+            ['What is the only state in the United States that does not have a flag in shape with 4 edges?', 'Ohio'],
+            ['What is the Polish city known to Germans as Danzig', 'Gdansk'],
+            ['What is the region conjoining Pakistan, India, and China with unknown leadership called?', 'Kashmir'],
+            ['What is the right way to spell the capital of Hungary?', 'Budapest'],
+            ['What is the second-largest city in Lithuania', 'Kaunas'],
+            ['What is the smallest country in South America by area?', 'Suriname'],
+            ['What is the smallest country in the world?', 'Vatican City'],
+            ['What is the tallest mountain in Canada?', 'Mount Logan']
+        ]);
+
+        const whatIsTheName = new Map([
+            ['What is the name of New Zealands indigenous people?', 'Maori'],
+            ['What is the name of one of the Neo-Aramaic languages spoken by the jewish population from Northwestern Iraq', 'Lishana Deni'],
+            ['What is the name of rocky region that spans most eastern Canada?', 'Canadian Shield'],
+            ['What is the name of the Canadian national anthem?', 'O Canada'],
+            ['What is the name of the capital of Turkey', 'Ankara'],
+            ['What is the name of the fomerly rich fishing grounds off the island of Newfoundland, Canada?', 'Grand Banks'],
+            ['What is the name of the former country that was succeeded by countries such as Serbia, Croatia and Solovenia?', 'Yugoslavia'],
+            ['What is the name of the only remaining Grand Duchy in the world?', 'Luxembourg'],
+            ['What is the name of the peninsula containing Spain and Portugal?', 'Iberian Peninsula']
+
+        ]);
+
+        const whatIsTheLargest = new Map([
+            ['What is the largest city and commercial capital of Sir Lanka', 'Colombo'],
+            ['What is the largest city in Morocco?', 'Casablanca'],
+            ['What is the largest country in the world?', 'Russia'],
+            ['What is the largest freshwater lake by volume?', 'Lake Baikal'],
+            ['What is the largest lake in the African continent?', 'Lake Victoria'],
+            ['What is the largest Muslim country in the world?', 'Indonesia'],
+            ['What is the largest non-continental island in the world?', 'Greenland'],
+            ['What is the longest river in Europe?', 'Volga'],
+            ['What is the largest city and commercial capital of Sir Lanka', 'Colombo'],
+            ['What is the largest city in Morocco?', 'Casablanca'],
+            ['What is the largest country in the world?', 'Russia'],
+            ['What is the largest freshwater lake by volume?', 'Lake Baikal'],
+            ['What is the largest lake in the African continent?', 'Lake Victoria'],
+            ['What is the largest Muslim country in the world?', 'Indonesia'],
+            ['What is the largest non-continental island in the world?', 'Greenland'],
+            ['What is the longest river in Europe?', 'Volga']
+
+        ]);
+
+        const when = new Map([
+            ['When does Finland celebrate their independence day?', 'December 6']
+        ]);
+
+        const where = new Map([
+            ['Where are the Nazca Lines Located', 'Peru'],
+            ['Where is Hadrians Wall located?', 'Carlise England'],
+            ['Where is the area commonly known as the bermuda Triangle', 'North Atlantic Ocean, between Florida and Puerto Rico'],
+            ['Where is the fast food chain "Panda Express" headquartered?', 'Rosemead, California'],
+            ['Where is the Sonoral Desert located', 'North America'],
+            ['Where would you find the "Spanish Steps"', 'Rome, Italy']
+
+        ]);
+
+        const which = new Map([
+            ['Which Canadian province has Charlottetown as its capital?', 'Prince Eward Island'],
+            ['Which city is known as the Rose Capital of the World', 'Tyler, Texas'],
+            ['Which city is the capital of Switzerland?', 'Bern'],
+            ['Which English county will you find the University of East Anglia?', 'Norfolk'],
+            ['Which European city has the highest mileage of canals in the world', 'Birminghan'],
+            ['Which German city is located on the River Isar?', 'Munich'],
+            ['Which is not a country in Africa?', 'Guyana'],
+            ['Which is the capital of the US state Nevada?', 'Carson City'],
+            ['which is the largest city in Morocco', 'Casablanca'],
+            ['Which is the largest freshwater lake in the world?', 'Lake Superior'],
+            ['Which is the largest lake in the African Continent?', 'Lake Victoria'],
+            ['Which is the worlds longest river?', 'Nile'],
+            ['Which nation claims ownership of Antartica', 'No One, but there'],
+            ['Which ocean borders the west coast of the united States?', 'Pacific'],
+            ['Which one of these countries borders with Poland?', 'Lithuana'],
+            ['Which Russian oblast forms a border with Poland?', 'Kaliningrad'],
+            ['Which small country is located between the borders of france and Spain', 'Andorra'],
+            ['Which state of the United States is the smallest?', 'Rhode Island'],
+            ['Which two modern-day countries used to be known as the region of Rhodesia between the 1890s and 1980', 'Zambia & Zimbabwe'],
+            ['Which UK country features a dragon on their flag?', 'Wales'],
+            ['Which US state has the highest population', 'California']
+
+        ]);
+
+        const whichCountry = new Map([
+            ['Which country claims ownership of the disputed state kesovo?', 'Serbia'],
+            ['Which country does Austria not border', 'France'],
+            ['Which country has three capital cities?', 'South Africa'],
+            ['Which country inside the United kingdom does NOT appear on its flag, the Union Jack?', 'Wales'],
+            ['Which country is completely landlocked by South Africa?', 'Lesotho'],
+            ['Which country is the home of the largest Japanese population outside of Japan?', 'Brazil'],
+            ['Which country was NOT formerly part of Yugoslavia', 'Albania'],
+            ['Which country was NOT part of the Soviet Union?', 'Romania'],
+            ['Which Country with Abreviation of "CH"?', 'Switzerland']
+        ]);
+
+        const whichOfTheFollowing = new Map([
+            ['Which of the following Arab countries does NOT hava a flag containing only Pan-Arab colours?', 'Quatar'],
+            ['Which of the following countries banned the use of personal genetic ancestry tests?', 'Germany'],
+            ['Which of the following countries does NOT recognize Armenia as an independent country?', 'Pakistan'],
+            ['Which of the following countries is within the Eurozone but outside of the Schengen Area?', 'Cyprus'],
+            ['Which of the following European Languages is classified as a "Language Isolate"', 'Basque'],
+            ['Which of the following former Yugoslavian states is landlocked?', 'Serbia'],
+            ['Which of the following Inuit languages was the FIRST to use a unique writing system not based on the Latin alphabet?', 'Inukitut'],
+            ['Which of the following is Not a capital city?', 'Sydney'],
+            ['Which of the following is not a megadiverse country - one that harbors a high number of the earths endemic species', 'Thailand'],
+            ['Which of the following is the longest river in Europe?', 'Volga'],
+            ['Which of the following Japanese islands is the biggest?', 'Honshu'],
+            ['Which of the following language families is the most controversial amongst modern linguists?', 'Altaic'],
+            ['Which of the following languages does NOT use the Latin alphabet?', 'Georgian']
+        ]);
+
+        const whichOfThese = new Map([
+            ['Which of these African countries list "Spanish" as an official language', 'Equatorial Guinea'],
+            ['Which of these cities has a 4 degrees East longitude', 'Amsterdam'],
+            ['Which of these cities is NOT in England?', 'Edinburgh'],
+            ['Which of these countries is "doubly landlocked" (Sorrounded entirely by one or more landlocked countries)?', 'Uzbekistan'],
+            ['Which of these countries is located the FURTHEST away from the South China Sea?', 'Bangladesh'],
+            ['Which of these countries is NOT a part of the Asian Continent', 'Suriname'],
+            ['Which of these countries is not a United member State?', 'Niue'],
+            ['Which of these countries is not located in Africa?', 'Suriname'],
+            ['Which of these countries is the smallest by population', 'Norway'],
+            ['Which of these countrys capitals starts with the letter B?', 'Lebanon'],
+            ['Which of these is NOT a city in India?', 'Islamabad'],
+            ['Which of these is NOT a province in China?', 'Yangtze'],
+            ['Which of these is NOT a real tectonic plate?', 'Atlantic Plate'],
+            ['Which of these is NOT an Australian state of territory', 'Alberta'],
+            ['Which of these is the name of the largest ciity in the US state Tennesse?', 'Memphis'],
+            ['Which of these island countries is located in the Caribbean?', 'Barbados']
+        ]);
+
+        span1.addEventListener('click', aToMFunction);
+        span2.addEventListener('click', howManyFunction);
+        span3.addEventListener('click', inAllFunction);
+        span4.addEventListener('click', theAllFunction);
+        span5.addEventListener('click', whatFunction);
+        span6.addEventListener('click', whatIsTheCapitalFunction);
+        span7.addEventListener('click', whatIsTheFunction);
+        span8.addEventListener('click', whatIsTheNameFunction);
+        span9.addEventListener('click', whatIsTheLargestFunction);
+        span10.addEventListener('click', whenFunction);
+        span11.addEventListener('click', whereFunction);
+        span12.addEventListener('click', whichFunction);
+        span13.addEventListener('click', whichCountryFunction);
+        span14.addEventListener('click', whichOfTheFollowingFunction);
+        span15.addEventListener('click', whichOfTheseFunction);
+
+        function aToMFunction(){
+            generateList('quiz1', 'quest1', aToM, '#quest1 tr', 'click1');
+        }
+
+        function howManyFunction(){
+            generateList('quiz2', 'quest2', howMany, '#quest2 tr', 'click2');
+        }
+
+        function inAllFunction(){
+            generateList('quiz3', 'quest3', inAll, '#quest3 tr', 'click3');
+        }
+
+        function theAllFunction(){
+            generateList('quiz4', 'quest4', theAll, '#quest4 tr', 'click4');
+        }
+
+        function whatFunction(){
+            generateList('quiz5', 'quest5', what, '#quest5 tr', 'click5');
+        }
+
+        function whatIsTheCapitalFunction(){
+            generateList('quiz6', 'quest6', whatIsTheCapital, '#quest6 tr', 'click6');
+        }
+
+        function whatIsTheFunction(){
+            generateList('quiz7', 'quest7', whatIsThe, '#quest7 tr', 'click7');
+        }
+
+        function whatIsTheNameFunction(){
+            generateList('quiz8', 'quest8', whatIsTheName, '#quest8 tr', 'click8');
+        }
+
+        function whatIsTheLargestFunction(){
+            generateList('quiz9', 'quest9', whatIsTheLargest, '#quest9 tr', 'click9');
+        }
+
+        function whenFunction(){
+            generateList('quiz10', 'quest10', when, '#quest10 tr', 'click10');
+        }
+
+        function whereFunction(){
+            generateList('quiz11', 'quest11', where, '#quest11 tr', 'click11');
+        }
+
+        function whichFunction(){   
+            generateList('quiz12', 'quest12', which, '#quest12 tr', 'click12');
+        }
+
+        function whichCountryFunction(){
+            generateList('quiz13', 'quest13', whichCountry, '#quest13 tr', 'click13');
+        }
+
+        function whichOfTheFollowingFunction(){
+            generateList('quiz14', 'quest14', whichOfTheFollowing, '#quest14 tr', 'click14');
+        }
+
+        function whichOfTheseFunction(){
+            generateList('quiz15', 'quest15', whichOfThese, '#quest15 tr', 'click15');
+        }
+
+        function generateList(quiz, quest, list, query, getId){
+            hideAndSeek(quiz);
+            let table = document.getElementById(quest);
+            let rows = document.querySelectorAll(query);
+            console.log(rows.length);
+
+            if(rows.length != 0){
+                table.classList.remove('hide');
+                return
+            } else {
+                list.forEach(function(value, key, map){
+                    showTheRecords(value, key, table, getId);
+                })
+            }
+        }
+
+        function showTheRecords(value, key, table, id){
+
+            let buttons = document.querySelectorAll('span');
+            for(button of buttons){
+                if(button.id == id){
+                    button.classList.add('selected');
+                } else {
+                    button.classList.remove('selected');
+                }
+            }
+
+            let row1 = document.createElement('tr');
+            let col1 = document.createElement('td');
+            let col2 = document.createElement('td');
+            table.append(row1);
+            row1.append(col1);
+            row1.append(col2);
+            col1.textContent = key;
+            col2.textContent = value;
+
+            row1.classList.add('showLines');
+            col1.classList.add('showLines');
+            col2.classList.add('showLines');
+
+            col1.classList.add('addPadding');
+            col2.classList.add('addPadding');
+                
+            col1.classList.add('selectList');
+            col2.classList.add('selectList');  
+
+            col1.addEventListener('mousemove', addRed);
+            col1.addEventListener('mouseout', removeRed);
+                
+            function addRed(){
+                col2.classList.add('red');
+            }
+
+            function removeRed(){
+                col2.classList.remove('red');
+            }
+        }
+
+        function hideAndSeek(name){
+            for(const div of divs){
+                div.classList.add('hide');
+            }
+            divs['final'].classList.remove('hide'); 
+            divs[name].classList.remove('hide');    
+        }
+
+    </script>
+</body>
+</html>
